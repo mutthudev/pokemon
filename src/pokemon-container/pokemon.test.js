@@ -3,6 +3,7 @@ import Adapter from "enzyme-adapter-react-16";
 import { act, render } from "@testing-library/react";
 import PokeMon from ".";
 import { Card } from "@mui/material";
+import PokemonOptions from "./components/pokemonOptions";
 
 configure({ adapter: new Adapter() });
 
@@ -24,7 +25,6 @@ describe("pokemon testing", () => {
   });
 
   test("render welcome Title", () => {
-     console.log(wrapper.debug());
     expect(wrapper.find("#welcome").text()).toContain(
       "Welcome to Pokemon List"
     );
@@ -71,4 +71,15 @@ describe("Card testing", () => {
       test("Render Abilities", () => {
         expect(wrapper.contains("#abilities")).toBe(false);      
       });
+  });
+
+  describe("Pokemon Options", () => {  
+  
+    test("Render pokemon options", () => {
+      const wrapper = shallow(<PokemonOptions />);
+
+      expect(wrapper.find("#sort").text()).toContain("Sort By");
+  
+      expect(wrapper.find("#filter").text()).toContain("Filter By");
+    });
   });

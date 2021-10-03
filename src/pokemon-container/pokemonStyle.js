@@ -66,3 +66,8 @@ export const StyledValue = styled.h4`
 export const StyledTextCapitalize = styled.div`
   text-transform: capitalize;
 `;
+
+export const StyledLeftPanelWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
