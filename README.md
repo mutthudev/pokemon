@@ -70,11 +70,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-### `Dev Instructions
+### Dev Instructions
 
-Please Run "npm start" to run the Application
-Please Run "npm test" to test the Application 
+Please Run "npm start" to run the Application.\
+Please Run "npm test" to test the Application .\
 
-For sorting, Select any one of the Radio Button 
-For Filtering, Select Name or Ability and then enter the key, Results will be shown as we type in 
+For sorting, Select any one of the Radio Button.\ 
+For Filtering, Select Name or Ability and then enter the key, Results will be shown as we type in .\
 
