@@ -2,6 +2,7 @@ import { configure, shallow } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import { act, render } from "@testing-library/react";
 import PokeMon from ".";
+import { Card } from "@mui/material";
 
 configure({ adapter: new Adapter() });
 
@@ -43,3 +44,15 @@ describe("pokemon testing", () => {
 //     await act(async () => render(<PokeMon />));        
 //   });
 // });
+
+describe("Card testing", () => {
+    let wrapper;
+  
+    beforeEach(() => {
+      wrapper = shallow(<Card />);
+    });    
+  
+    test("render Left Panel", () => {
+      expect(wrapper.contains("#card")).toBe(false);
+    });  
+  });

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
 import { StyledLeftPanel, StyledRightPanel } from "./pokemonStyle";
+import { Card } from "./components/card";
 
 function PokeMon(props) {
   const [pokemonResponse, setPokemonResponse] = useState(null);
@@ -32,7 +33,7 @@ function PokeMon(props) {
               results.map((pokemon) => {
                 return (
                   <Grid key={pokemon.name} item lg={3} md={4} xs={12}>
-                    {pokemon.name}
+                     <Card key={pokemon.name} pokemon={pokemon} />
                   </Grid>
                 );
               })}
