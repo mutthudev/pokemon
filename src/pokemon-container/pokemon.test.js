@@ -59,4 +59,16 @@ describe("Card testing", () => {
     test("Render Card", () => {
       expect(wrapper.contains("#card")).toBe(false);
     });  
+
+    test("Render Weight", () => {
+        expect(wrapper.contains("#weight")).toBe(false);      
+      });  
+
+      test("Render Height", () => {
+        expect(wrapper.contains("#height")).toBe(false);      
+      });
+
+      test("Render Abilities", () => {
+        expect(wrapper.contains("#abilities")).toBe(false);      
+      });
   });

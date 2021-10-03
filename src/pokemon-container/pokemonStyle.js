@@ -46,3 +46,23 @@ export const StyledImage = styled.img`
   height: 7rem;
   width: 7rem;
 `;
+
+export const StyledWrapper = styled.div`
+  height: 30px;
+  display: flex;
+  justify-content: flex-start;
+`;
+
+export const StyledLabel = styled.h4`
+  font-weight: bold;
+  padding: 5px;
+`;
+
+export const StyledValue = styled.h4`
+  font-weight: normal;
+  padding: 5px;
+`;
+
+export const StyledTextCapitalize = styled.div`
+  text-transform: capitalize;
+`;
