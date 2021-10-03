@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   StyledCard,
   StyledCardContent,
@@ -12,17 +12,7 @@ import {
 
 export const Card = (props) => {
   const { pokemon } = props;
-  const [pokemonDetails, setPokemonDetails] = useState(null);
-  const { weight, height, abilities } = pokemonDetails || {};
-  
-  useEffect(() => {
-    fetch(pokemon.url)
-      .then((response) => response.json())
-      .then((response) => {
-        console.log("response", response);
-        setPokemonDetails(response);
-      });
-  }, [pokemon.url]);
+  const { weight, height, abilities } = pokemon || {};
 
   return (
     <StyledCard id="card">
