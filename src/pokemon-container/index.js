@@ -1,7 +1,20 @@
+import { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
 import { StyledLeftPanel, StyledRightPanel } from "./pokemonStyle";
 
 function PokeMon(props) {
+  const [pokemonResponse, setPokemonResponse] = useState(null);
+  const { results } = pokemonResponse || {};
+
+  useEffect(() => {
+    const url = `https://pokeapi.co/api/v2/pokemon?limit=10&offset=0`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((response) => {
+        setPokemonResponse(response);
+      });
+  }, []);
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -14,7 +27,16 @@ function PokeMon(props) {
       </Grid>
       <Grid item md={10} xs={12}>
         <StyledRightPanel id="rightPanel">
-          <h2>Right Panel</h2>
+          <Grid container spacing={2}>
+            {results &&
+              results.map((pokemon) => {
+                return (
+                  <Grid key={pokemon.name} item lg={3} md={4} xs={12}>
+                    {pokemon.name}
+                  </Grid>
+                );
+              })}
+          </Grid>
         </StyledRightPanel>
       </Grid>
     </Grid>
