@@ -1,20 +1,29 @@
 import { useState, useEffect } from "react";
-import { Grid } from "@mui/material";
+import { Grid, TablePagination as Pagination } from "@mui/material";
 import { StyledLeftPanel, StyledRightPanel } from "./pokemonStyle";
 import { Card } from "./components/card";
 
 function PokeMon(props) {
   const [pokemonResponse, setPokemonResponse] = useState(null);
-  const { results } = pokemonResponse || {};
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [page, setPage] = useState(0);
+
+  const { results: pokemonList, count: pokemonCount } = pokemonResponse || {};
 
   useEffect(() => {
-    const url = `https://pokeapi.co/api/v2/pokemon?limit=10&offset=0`;
+    const url = `https://pokeapi.co/api/v2/pokemon?limit=${rowsPerPage}
+                      &offset=${rowsPerPage * page}`;
+
     fetch(url)
       .then((response) => response.json())
       .then((response) => {
         setPokemonResponse(response);
       });
-  }, []);
+  }, [rowsPerPage, page]);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
 
   return (
     <Grid container spacing={2}>
@@ -28,16 +37,34 @@ function PokeMon(props) {
       </Grid>
       <Grid item md={10} xs={12}>
         <StyledRightPanel id="rightPanel">
+          <Pagination
+            rowsPerPageOptions={[10, 20, 50]}
+            component="div"
+            count={pokemonCount}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={(event) => setRowsPerPage(event.target.value)}
+          />
           <Grid container spacing={2}>
-            {results &&
-              results.map((pokemon) => {
+            {pokemonList &&
+              pokemonList.map((pokemon) => {
                 return (
                   <Grid key={pokemon.name} item lg={3} md={4} xs={12}>
-                     <Card key={pokemon.name} pokemon={pokemon} />
+                    <Card key={pokemon.name} pokemon={pokemon} />
                   </Grid>
                 );
               })}
           </Grid>
+          <Pagination
+            rowsPerPageOptions={[10, 20, 50]}
+            component="div"
+            count={pokemonCount}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={(event) => setRowsPerPage(event.target.value)}
+          />
         </StyledRightPanel>
       </Grid>
     </Grid>

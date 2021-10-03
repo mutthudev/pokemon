@@ -24,7 +24,7 @@ describe("pokemon testing", () => {
   });
 
   test("render welcome Title", () => {
-    // console.log(wrapper.debug());
+     console.log(wrapper.debug());
     expect(wrapper.find("#welcome").text()).toContain(
       "Welcome to Pokemon List"
     );
@@ -37,6 +37,10 @@ describe("pokemon testing", () => {
   test("render Right Panel", () => {
     expect(wrapper.contains("#rightPanel")).toBe(false);
   });
+
+  test("Render Pagination", () => {
+    expect(wrapper.contains("<Pagination")).toBe(false);
+  });  
 });
 
 // describe("API Test", () => {
@@ -52,7 +56,7 @@ describe("Card testing", () => {
       wrapper = shallow(<Card />);
     });    
   
-    test("render Left Panel", () => {
+    test("Render Card", () => {
       expect(wrapper.contains("#card")).toBe(false);
     });  
   });
