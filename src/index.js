@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import PokeMon from './pokemon-container';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <PokeMon />
   </React.StrictMode>,
   document.getElementById('root')
 );
